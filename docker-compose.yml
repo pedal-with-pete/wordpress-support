@@ -72,7 +72,7 @@ services:
   #     # WORDPRESS_ENABLE_HTACCESS_PERSISTENCE: "yes"
   #     # Site config
   #     WORDPRESS_USERNAME: admin
-  #     WORDPRESS_PASSWORD: Test1234
+  #     WORDPRESS_PASSWORD: ${PWP_DB_PASSWORD}
   #     WORDPRESS_EMAIL: pwp@mailhog
   #     WORDPRESS_BLOG_NAME: "Sandbox :: Pedal With Pete"
   #     WORDPRESS_SCHEME: http
