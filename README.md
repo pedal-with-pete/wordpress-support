@@ -107,3 +107,4 @@ To update the maximum upload file size:
 - Guide for Github non-profit discounts <https://docs.github.com/en/billing/managing-billing-for-your-github-account/discounted-subscriptions-for-github-accounts#discounts-for-personal-accounts>
 - Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>
 - Set up an incoming webhook for MS Teams <https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-incoming-webhooks-1>
+  - Notify MSFT Teams Github action <https://github.com/marketplace/actions/notify-microsoft-teams>
