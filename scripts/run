@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+docker run -d --name wp.pedal_with_pete \
+  -p 8080:8080 -p 8443:8443 \
+  --env ALLOW_EMPTY_PASSWORD=yes \
+  --env WORDPRESS_DATABASE_USER=root \
+  --env WORDPRESS_DATABASE_PASSWORD=${PWP_DB_PASSWORD} \
+  --env WORDPRESS_DATABASE_NAME=pwp_wordpress \
+  --network pwp_net \
+  --volume pedalwithpete_wordpress:/bitnami/wordpress \
+  --rm \
+  bitnami/wordpress:latest

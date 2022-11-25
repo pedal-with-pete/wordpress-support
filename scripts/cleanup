@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+PROJ_PATH=`dirname $(dirname $(readlink -f "${BASH_SOURCE:-$0}"))`
+
+rm -Rvf $PROJ_PATH/data
+rm -Rvf $PROJ_PATH/app
+# # TODO: Check if docker volume exists before attempting to delete
+# docker volume rm pedalwithpete_wordpress
