@@ -1,3 +1,5 @@
+# TODO: To repeat these tests for both the sandbox and production
+#   review the docs on setting up a composite action: https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
 name: Cypress E2E Tests
 on:
   push:
@@ -6,42 +8,46 @@ on:
   pull_request:
 
 jobs:
+  # https://sandboxforpwpwordpress.azurewebsites.net/
   cypress-e2e-chrome:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-
-      # Install NPM dependencies
-      - name: Install nodejs
-        uses: actions/setup-node@v3
+      - uses: actions/pedal-with-pete/e2e-composite-action@v1
         with:
-          node-version: "16"
+          website_url: https://pedalwithpete.org
 
-      # PNPM setup github action: https://github.com/pnpm/action-setup
-      - uses: pnpm/action-setup@v2.2.1
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
+      # # Install NPM dependencies
+      # - name: Install nodejs
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: "16"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      # # PNPM setup github action: https://github.com/pnpm/action-setup
+      # - uses: pnpm/action-setup@v2.2.1
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 7
+      #     run_install: false
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      # - name: Get pnpm store directory
+      #   id: pnpm-cache
+      #   run: |
+      #     echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      # - uses: actions/cache@v3
+      #   name: Setup pnpm cache
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
 
       # and run all Cypress tests
-      - name: E2E on Chrome
-        # Cypress github action: https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
-        with:
-          browser: chrome
-          start: pnpm test
+      # - name: E2E on Chrome
+      #   # Cypress github action: https://github.com/cypress-io/github-action
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     browser: chrome
+      #     start: pnpm test
