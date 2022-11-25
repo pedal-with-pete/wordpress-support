@@ -1,4 +1,4 @@
-# Guard against regressions due to dependency updates 
+# Guard against regressions due to dependency updates
 # on Pedal with Pete websites
 name: Cypress E2E Tests
 
@@ -7,6 +7,7 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   # https://sandboxforpwpwordpress.azurewebsites.net/
