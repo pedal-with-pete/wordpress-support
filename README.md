@@ -90,5 +90,6 @@ To update the maximum upload file size:
 
 ## References
 
+- Dispatching a Github workflow run <https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event>
 - Guide for Github non-profit discounts <https://docs.github.com/en/billing/managing-billing-for-your-github-account/discounted-subscriptions-for-github-accounts#discounts-for-personal-accounts>
 - Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>
