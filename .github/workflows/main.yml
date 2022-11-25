@@ -1,10 +1,8 @@
-# TODO: To repeat these tests for both the sandbox and production
-#   review the docs on setting up a composite action: https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
-name: Cypress E2E Tests
-
 description: |
   Guard against regressions due to dependency updates 
   on Pedal with Pete websites
+
+name: Cypress E2E Tests
 
 on:
   push:
