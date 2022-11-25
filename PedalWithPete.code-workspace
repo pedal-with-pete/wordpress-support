@@ -5,6 +5,7 @@
     }
   ],
   "settings": {
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "debug.internalConsoleOptions": "neverOpen"
   }
 }

@@ -3,6 +3,7 @@
 - [Pedal with Pete E2E Test Suite](#pedal-with-pete-e2e-test-suite)
   - [Ports](#ports)
   - [Update hostfile](#update-hostfile)
+  - [Setup local dependency for asure functions development](#setup-local-dependency-for-asure-functions-development)
   - [Starting the application](#starting-the-application)
   - [Local dependencies](#local-dependencies)
   - [View logs](#view-logs)
@@ -32,6 +33,12 @@ Add the following records to your `/etc/hosts` file
 # Pedal with Pete
 127.0.0.1 app.pedalwithpete adminer.pedalwithpete mailhog.pedalwithpete
 ::1       app.pedalwithpete adminer.pedalwithpete mailhog.pedalwithpete
+```
+
+## Setup local dependency for asure functions development
+
+```shell
+pnpm add -g azure-functions-core-tools@4 --unsafe-perm true
 ```
 
 ## Starting the application
@@ -108,3 +115,4 @@ To update the maximum upload file size:
 - Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>
 - Set up an incoming webhook for MS Teams <https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-incoming-webhooks-1>
   - Notify MSFT Teams Github action <https://github.com/marketplace/actions/notify-microsoft-teams>
+- Deployment Azure resources <https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-cli#deploy-resources>
