@@ -6,6 +6,8 @@ describe('donate via the website top bar CTA', () => {
   }
 
   beforeEach(() => {
+    console.debug(`Website URL: ${process.env.WEBSITE_URL}`)
+    cy.pause()
     cy.visit('https://pedalwithpete.org')
     cy.intercept('GET', 'https://www.paypal.com/donate?hosted_button_id=*').as('visitDonationPage')
   })
