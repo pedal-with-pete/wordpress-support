@@ -2,6 +2,15 @@
 
 The sandbox environment for the Pedal with Pete website is <https://sandboxforpwpwordpress.azurewebsites.net/wp-admin>
 
+## Ports
+
+> `28025` - `28036`. Ports doc <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>
+
+- Adminer `28081`
+- Mailhog `1025`, `8025`
+- MySQL `3306`
+- Wordpress `28080`
+
 ## Update hostfile
 
 Add the following records to your `/etc/hosts` file
