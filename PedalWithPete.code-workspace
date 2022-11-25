@@ -1,15 +1,19 @@
 {
+  // WARNING: DO NOT create folder mappings for nested projects. This 
+  // will break the experience of the Azure Functions extension
   "folders": [
     {
       "path": "."
-    },
-    {
-      "name": "Azure Functions",
-      "path": "./app/functions/"
     }
   ],
   "settings": {
     "terminal.integrated.fontSize": 14,
-    "debug.internalConsoleOptions": "neverOpen"
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectLanguage": "TypeScript"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-azuretools.vscode-azurefunctions"
+    ]
   }
 }
