@@ -1,6 +1,9 @@
-name: Cypress Tests
-
-on: [pull_request, push]
+name: Cypress E2E Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   cypress-e2e-chrome:
