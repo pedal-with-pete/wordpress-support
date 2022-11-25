@@ -14,6 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # https://github.com/pedal-with-pete/e2e-composite-action
-      - uses: pedal-with-pete/e2e-composite-action@v1.0.3
+      - uses: pedal-with-pete/e2e-composite-action@v1.0.4
         with:
           website_url: https://pedalwithpete.org
