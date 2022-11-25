@@ -1,6 +1,11 @@
 # TODO: To repeat these tests for both the sandbox and production
 #   review the docs on setting up a composite action: https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
 name: Cypress E2E Tests
+
+description: |
+  Guard against regressions due to dependency updates 
+  on Pedal with Pete websites
+
 on:
   push:
     branches:
@@ -13,7 +18,15 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       # https://github.com/pedal-with-pete/e2e-composite-action
-      - uses: pedal-with-pete/e2e-composite-action@v1.0.4
+      - uses: pedal-with-pete/e2e-composite-action@v1.0.6
+
+      - name: E2E on Chrome
+        # Cypress github action: https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v4
         with:
-          website_url: https://pedalwithpete.org
+          browser: chrome
+          start: pnpm test
+        env:
+          WEBSITE_URL: https://pedalwithpete.org
