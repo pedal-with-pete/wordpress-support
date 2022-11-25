@@ -21,10 +21,10 @@ jobs:
       - name: E2E on Chrome
         # Cypress github action: https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v4
-        with:
-          browser: chrome
-          spec: |
-            cypress/e2e/1-donate/**/*.cy.js
-            cypress/e2e/2-volunteer/**/*.cy.js
         env:
           WEBSITE_URL: https://pedalwithpete.org
+        with:
+          browser: chrome
+          # spec: |
+          #   cypress/e2e/1-donate/**/*.cy.js
+          #   cypress/e2e/2-volunteer/**/*.cy.js
