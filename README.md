@@ -1,6 +1,15 @@
-# wordpress.pedalwithpete
+# Pedal with Pete E2E Test Suite
 
 The sandbox environment for the Pedal with Pete website is <https://sandboxforpwpwordpress.azurewebsites.net/wp-admin>
+
+## Ports
+
+> `28025` - `28036`. Ports doc <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>
+
+- Adminer `28081`
+- Mailhog `1025`, `8025`
+- MySQL `3306`
+- Wordpress `28080`
 
 ## Update hostfile
 
@@ -78,3 +87,8 @@ To update the maximum upload file size:
 - Connect to the site source via SFTP in the Azure Deployment Center
 - Download and edit the `.user.ini` file to update the corresponding configuration line
 - Re-start the application
+
+## References
+
+- Guide for Github non-profit discounts <https://docs.github.com/en/billing/managing-billing-for-your-github-account/discounted-subscriptions-for-github-accounts#discounts-for-personal-accounts>
+- Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>

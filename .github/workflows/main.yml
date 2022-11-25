@@ -1,43 +1,30 @@
-name: Cypress Tests
+# Guard against regressions due to dependency updates 
+# on Pedal with Pete websites
+name: Cypress E2E Tests
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
+  # https://sandboxforpwpwordpress.azurewebsites.net/
+  cypress-e2e-chrome:
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      # Install NPM dependencies
-      - name: Install nodejs
-        uses: actions/setup-node@v3
+      # https://github.com/pedal-with-pete/e2e-composite-action
+      - uses: pedal-with-pete/e2e-composite-action@v1.0.6
+
+      - name: E2E on Chrome
+        # Cypress github action: https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v4
+        env:
+          WEBSITE_URL: https://pedalwithpete.org
         with:
-          node-version: "16"
-
-      # PNPM setup: https://github.com/pnpm/action-setup
-      - uses: pnpm/action-setup@v2.2.1
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4.x.x # use the explicit version number
-        with:
-          start: pnpm test
+          browser: chrome
+          spec: |
+            cypress/e2e/1-donate/**/*.cy.js
+            cypress/e2e/2-volunteer/**/*.cy.js

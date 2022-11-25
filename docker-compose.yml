@@ -56,48 +56,6 @@ services:
     networks:
       - pwp_net
 
-  # # Bitnami Wordpress
-  # wordpress:
-  #   image: bitnami/wordpress:latest
-  #   container_name: wp.pedal_with_pete
-  #   environment:
-  #     # Documentation: https://hub.docker.com/r/bitnami/wordpress
-  #     MARIADB_HOST: mysql8.pedalwithpete
-  #     MARIADB_PORT_NUMBER: 3306
-  #     # WORDPRESS_DATABASE_NAME: PedalWithPete
-  #     WORDPRESS_DATABASE_USER: root
-  #     WORDPRESS_DATABASE_PASSWORD: ${PWP_DB_PASSWORD}
-  #     # WORDPRESS_SKIP_INSTALL: "yes"
-  #     # This prompts seeking apache config file at /opt/bitnami/apache/conf/vhosts/htaccess/wordpress-htaccess.conf
-  #     # WORDPRESS_ENABLE_HTACCESS_PERSISTENCE: "yes"
-  #     # Site config
-  #     WORDPRESS_USERNAME: admin
-  #     WORDPRESS_PASSWORD: ${PWP_DB_PASSWORD}
-  #     WORDPRESS_EMAIL: pwp@mailhog
-  #     WORDPRESS_BLOG_NAME: "Sandbox :: Pedal With Pete"
-  #     WORDPRESS_SCHEME: http
-  #     # Mail configurations
-  #     SMTP_HOST: 127.0.0.1
-  #     SMTP_PORT: 1025
-  #     SMTP_USER: pwp@mailhog
-  #     SMTP_PASSWORD: null
-  #     # SMTP_PROTOCOL: none # [tls, ssl, none]
-  #   restart: unless-stopped
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     # - ./conf.d:/bitnami/apache/conf
-  #     - wordpress:/bitnami/wordpress
-  #     - ./backups:/usr/share/
-  #   depends_on:
-  #     - mysql8
-  #   networks:
-  #     - pwp_net
-
-# volumes:
-#   wordpress:
-#     driver: local
-
 networks:
   pwp_net:
     name: pwp_net
