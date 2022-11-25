@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/pedal-with-pete/e2e-composite-action@v1
+      - uses: github.com/pedal-with-pete/e2e-composite-action@v1
         with:
           website_url: https://pedalwithpete.org
 
