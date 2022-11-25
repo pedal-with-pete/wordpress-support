@@ -33,6 +33,7 @@ Temporary Items
 
 # Application code
 /app/*
+!/app/functions
 
 # NodeJS
 /node_modules

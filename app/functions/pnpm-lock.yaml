@@ -1,0 +1,27 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@azure/functions': ^3.0.0
+  '@types/node': 16.x
+  typescript: ^4.0.0
+
+devDependencies:
+  '@azure/functions': 3.2.0
+  '@types/node': 16.18.3
+  typescript: 4.9.3
+
+packages:
+
+  /@azure/functions/3.2.0:
+    resolution: {integrity: sha512-HbE7iORnYcjLzKNf5mIQRJQDTsVxhoXHRWEZ6KWdGh4e7+F9xTloiBicavbSoVmlAYivenIVpryHanVwsQaHUw==}
+    dev: true
+
+  /@types/node/16.18.3:
+    resolution: {integrity: sha512-jh6m0QUhIRcZpNv7Z/rpN+ZWXOicUUQbSoWks7Htkbb9IjFQj4kzcX/xFCkjstCj5flMsN8FiSvt+q+Tcs4Llg==}
+    dev: true
+
+  /typescript/4.9.3:
+    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
