@@ -25,6 +25,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Environment(s)
+.envrc
+
 # Database 
 /data/*
 
