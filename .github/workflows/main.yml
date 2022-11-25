@@ -25,6 +25,6 @@ jobs:
           WEBSITE_URL: https://pedalwithpete.org
         with:
           browser: chrome
-          # spec: |
-          #   cypress/e2e/1-donate/**/*.cy.js
-          #   cypress/e2e/2-volunteer/**/*.cy.js
+          spec: |
+            cypress/e2e/1-donate/**/*.cy.js
+            cypress/e2e/2-volunteer/**/*.cy.js
