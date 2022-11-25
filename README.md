@@ -1,5 +1,18 @@
 # Pedal with Pete E2E Test Suite
 
+- [Pedal with Pete E2E Test Suite](#pedal-with-pete-e2e-test-suite)
+  - [Ports](#ports)
+  - [Update hostfile](#update-hostfile)
+  - [Starting the application](#starting-the-application)
+  - [Local dependencies](#local-dependencies)
+  - [View logs](#view-logs)
+  - [Create the database](#create-the-database)
+  - [Setup wordpress](#setup-wordpress)
+  - [Update application configurations](#update-application-configurations)
+  - [Server configurations](#server-configurations)
+    - [Upload limit](#upload-limit)
+  - [References](#references)
+
 The sandbox environment for the Pedal with Pete website is <https://sandboxforpwpwordpress.azurewebsites.net/wp-admin>
 
 ## Ports
@@ -93,3 +106,4 @@ To update the maximum upload file size:
 - Dispatching a Github workflow run <https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event>
 - Guide for Github non-profit discounts <https://docs.github.com/en/billing/managing-billing-for-your-github-account/discounted-subscriptions-for-github-accounts#discounts-for-personal-accounts>
 - Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>
+- Set up an incoming webhook for MS Teams <https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-incoming-webhooks-1>
