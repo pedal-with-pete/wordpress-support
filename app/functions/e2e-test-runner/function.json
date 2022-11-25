@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "name": "RunE2ETestEvery5HoursTrigger",
+      "name": "myTimer",
       "type": "timerTrigger",
       "direction": "in",
       "schedule": "0 */5 * * * *"

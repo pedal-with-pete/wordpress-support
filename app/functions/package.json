@@ -1,12 +1,12 @@
 {
-  "name": "@pedal-with-pete/e2e-test-runner",
+  "name": "functions",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "prestart": "npm run build",
-    "start": "func start ./dist/e2e-test-runner/index.js --verbose true",
+    "start": "func start",
     "test": "echo \"No tests yet...\""
   },
   "packageManager": "pnpm@7.11.0",
