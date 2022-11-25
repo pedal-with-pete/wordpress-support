@@ -1,1 +1,2 @@
 export PWP_DB_PASSWORD=
+export WEBSITE_URL=https://pedalwithpete.org
