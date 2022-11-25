@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "cypress open"
+    "debug": "cypress open",
+    "test": "cypress run --config '{"watchForFileChanges":false,"specPattern":["1-donate/**/*.cy.js","2-volunteer/**/*.cy.ts"]}'"
   },
   "keywords": [],
   "author": "",
