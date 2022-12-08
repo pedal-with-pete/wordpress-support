@@ -1,4 +1,5 @@
 import { AzureFunction, Context } from "@azure/functions"
+// https://github.com/googleapis/gaxios
 import {request} from 'gaxios'
 
 function getDispatchEndpoint() {
