@@ -1,2 +1,6 @@
 export PWP_DB_PASSWORD=
 export WEBSITE_URL=https://pedalwithpete.org
+export GITHUB_ACTION_PAT=
+export GITHUB_REPO_OWNER=pedal-with-pete
+export GITHUB_REPO=wordpress-support
+export GITHUB_WORKFLOW_IDENTIFIER=main.yml

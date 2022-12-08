@@ -37,3 +37,7 @@ Temporary Items
 
 # NodeJS
 /node_modules
+package-lock.json
+
+# Azure
+.azurite
