@@ -44,10 +44,13 @@ jobs:
         run: |
           echo "STORE_PATH=${{ steps.pnpm-cache.outputs.STORE_PATH }}"
 
+      # TODO: Cache /home/runner/.cache/Cypress
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            /home/runner/.cache/Cypress
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
