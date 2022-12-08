@@ -4,16 +4,16 @@
 name: Build and deploy Node.js project to Azure Function App - e2e-test-runner
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  pull_request:
+  push:
     branches:
-      - fxns/*
-  workflow_dispatch:
+      - main
+  # pull_request:
+  #   branches:
+  #     - fxns/*
+  # workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: "./app/e2e-test-runner" # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: "./app/functions" # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: "16.x" # set this to the node version to use (supports 8.x, 10.x, 12.x)
 
 jobs:
@@ -24,17 +24,25 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Node ${{ env.NODE_VERSION }} Environment
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: "Resolve Project Dependencies Using Npm"
+      # PNPM setup github action: https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: "Resolve Project Dependencies Using NPM"
         shell: pwsh
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+          pnpm install
+          pnpm run build --if-present
+          pnpm run test --if-present
           popd
 
       - name: "Run Azure Functions Action"

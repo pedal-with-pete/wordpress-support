@@ -10,9 +10,11 @@
     "test": "echo \"No tests yet...\""
   },
   "packageManager": "pnpm@7.11.0",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@azure/functions": "^3.0.0",
+    "gaxios": "^5.0.2"
+  },
+  "devDependencies": {
     "@types/node": "16.x",
     "typescript": "^4.0.0"
   }
