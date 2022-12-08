@@ -1,0 +1,5 @@
+packages:
+  - "app/*"
+  # exclude packages that are inside test directories
+  - "!**/test/**"
+  - "!**/e2e/**"

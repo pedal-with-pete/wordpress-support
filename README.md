@@ -3,6 +3,7 @@
 - [Pedal with Pete E2E Test Suite](#pedal-with-pete-e2e-test-suite)
   - [Ports](#ports)
   - [Update hostfile](#update-hostfile)
+  - [Setup local dependency for asure functions development](#setup-local-dependency-for-asure-functions-development)
   - [Starting the application](#starting-the-application)
   - [Local dependencies](#local-dependencies)
   - [View logs](#view-logs)
@@ -32,6 +33,12 @@ Add the following records to your `/etc/hosts` file
 # Pedal with Pete
 127.0.0.1 app.pedalwithpete adminer.pedalwithpete mailhog.pedalwithpete
 ::1       app.pedalwithpete adminer.pedalwithpete mailhog.pedalwithpete
+```
+
+## Setup local dependency for asure functions development
+
+```shell
+pnpm add -g azure-functions-core-tools@4 --unsafe-perm true
 ```
 
 ## Starting the application
@@ -108,3 +115,7 @@ To update the maximum upload file size:
 - Reference project for E2E automation against WP plugin updates <https://github.com/carlalexander/carlalexander.ca>
 - Set up an incoming webhook for MS Teams <https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-incoming-webhooks-1>
   - Notify MSFT Teams Github action <https://github.com/marketplace/actions/notify-microsoft-teams>
+- Deployment Azure resources <https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-cli#deploy-resources>
+- Azure Functions JS development guide <https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-node?tabs=v2-v3-v4-export%2Cv2-v3-v4-done%2Cv2%2Cv2-log-custom-telemetry%2Cv2-accessing-request-and-response%2Cwindows-setting-the-node-version>
+- Azure Functions HTTP triggers and bindings overview <https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook?tabs=in-process%2Cfunctionsv2&pivots=programming-language-javascript>
+- Time trigger for Azure functions <https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript>

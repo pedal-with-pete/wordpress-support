@@ -1,0 +1,12 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "runE2ETestsEvery5HoursTrigger",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 0 */5 * * *"
+    }
+  ],
+  "scriptFile": "../dist/e2e-test-runner/index.js"
+}

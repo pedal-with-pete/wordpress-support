@@ -1,0 +1,8 @@
+{
+  "azureFunctions.deploySubpath": "app/functions",
+  "azureFunctions.postDeployTask": "npm install (functions)",
+  "azureFunctions.projectLanguage": "TypeScript",
+  "azureFunctions.projectRuntime": "~4",
+  "azureFunctions.projectSubpath": "app/functions",
+  "azureFunctions.preDeployTask": "npm prune (functions)"
+}

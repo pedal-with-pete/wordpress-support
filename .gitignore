@@ -33,6 +33,11 @@ Temporary Items
 
 # Application code
 /app/*
+!/app/functions
 
 # NodeJS
 /node_modules
+package-lock.json
+
+# Azure
+.azurite

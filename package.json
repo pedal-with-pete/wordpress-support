@@ -2,6 +2,7 @@
   "name": "@pedal-with-pete/wordpress-support",
   "version": "1.0.0",
   "description": "",
+  "packageManager": "pnpm@7.11.0",
   "scripts": {
     "debug": "cypress open"
   },
@@ -9,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^11.2.0"
+    "cypress": "^11.2.0",
+    "@types/node": "16.x",
+    "typescript": "^4.0.0"
   }
 }
