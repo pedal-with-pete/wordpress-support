@@ -36,7 +36,7 @@ jobs:
           version: 7
           run_install: false
 
-      - name: "Resolve Project Dependencies Using NPM"
+      - name: "Resolve Project Dependencies"
         shell: pwsh
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
