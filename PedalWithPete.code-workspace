@@ -9,11 +9,15 @@
   "settings": {
     "terminal.integrated.fontSize": 14,
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.projectLanguage": "TypeScript"
+    "azureFunctions.projectLanguage": "TypeScript",
+    "azurite.location": ".azurite"
   },
   "extensions": {
     "recommendations": [
-      "ms-azuretools.vscode-azurefunctions"
+      // Azure
+      "ms-azuretools.vscode-azurefunctions",
+      // Azure storage emulator
+      "Azurite.azurite"
     ]
   }
 }
