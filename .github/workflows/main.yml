@@ -44,7 +44,6 @@ jobs:
         run: |
           echo "STORE_PATH=${{ steps.pnpm-cache.outputs.STORE_PATH }}"
 
-      # TODO: Cache /home/runner/.cache/Cypress
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
