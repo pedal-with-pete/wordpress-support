@@ -2,6 +2,7 @@
   "name": "@pedal-with-pete/wordpress-support",
   "version": "1.0.0",
   "description": "",
+  "packageManager": "pnpm@7.11.0",
   "scripts": {
     "debug": "cypress open"
   },

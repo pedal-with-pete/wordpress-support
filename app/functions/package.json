@@ -1,11 +1,11 @@
 {
-  "name": "functions",
+  "name": "@pedal-with-pete/wordpress-support-functions",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "prestart": "npm run build",
+    "prestart": "pnpm run build",
     "start": "func start ./dist/e2e-test-runner/index.js --verbose true",
     "test": "echo \"No tests yet...\""
   },

@@ -117,3 +117,5 @@ To update the maximum upload file size:
   - Notify MSFT Teams Github action <https://github.com/marketplace/actions/notify-microsoft-teams>
 - Deployment Azure resources <https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-cli#deploy-resources>
 - Azure Functions JS development guide <https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-node?tabs=v2-v3-v4-export%2Cv2-v3-v4-done%2Cv2%2Cv2-log-custom-telemetry%2Cv2-accessing-request-and-response%2Cwindows-setting-the-node-version>
+- Azure Functions HTTP triggers and bindings overview <https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook?tabs=in-process%2Cfunctionsv2&pivots=programming-language-javascript>
+- Time trigger for Azure functions <https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript>
