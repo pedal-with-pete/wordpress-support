@@ -42,3 +42,5 @@ In the VSCode explorer, navigate to the Azure extension and in the workspace acc
 ## Learn more
 
 Check out notes on [Time trigger for Azure functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript)
+
+Check out notes on [CD with Github Actions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions?tabs=javascript)
