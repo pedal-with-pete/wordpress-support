@@ -39,6 +39,10 @@ To start the function host, run `pnpm run start` from the `app/functions` projec
 
 In the VSCode explorer, navigate to the Azure extension and in the workspace accordion, right click the function name *e2e-test-runner* and select *Execute function now*
 
+## Debugging deployment issues
+
+1. **WEBSITE_RUN_FROM_PACKAGE = 1:** When WEBSITE_RUN_FROM_PACKAGE is enabled, check the package on the SCM site contains the updated files. Go to your app's SCM endpoint (<https://e2e-test-runner.scm.azurewebsites.net>) and in the Debug Console go to `d:\home\data\packages` directory to verify this.
+
 ## Learn more
 
 Check out notes on [Time trigger for Azure functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript)
