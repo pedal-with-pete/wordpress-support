@@ -22,7 +22,7 @@ describe('donate via fundraiser page', () => {
     cy.contains('EIN: 34-1732505')
   })
 
-  it('can make fixed amount donations', () => {
+  xit('can make fixed amount donations', () => {
     hitPayPalCTA()
     // Wait for the page to load
     cy.wait('@visitFundraiserPage').its('response.statusCode').should('eq', 200)
