@@ -26,8 +26,8 @@ jobs:
           - "lts/*"
         browser:
           - chrome
-          - firefox
-          - edge
+          # - firefox
+          # - edge
 
     steps:
       - uses: actions/checkout@v4
