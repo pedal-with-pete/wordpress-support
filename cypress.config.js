@@ -8,6 +8,10 @@ module.exports = defineConfig({
   defaultCommandTimeout: 10000,
   requestTimeout: 12000,
   e2e: {
+    specPattern: [
+      "cypress/e2e/1-donate/*.cy.{js,jsx}",
+      "cypress/e2e/2-volunteer/*.cy.{js,jsx}",
+    ],
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

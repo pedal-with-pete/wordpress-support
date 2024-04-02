@@ -44,3 +44,6 @@ package-lock.json
 
 # Cypress
 /cypress/downloads
+/cypress/screenshots
+/cypress/videos
+/cypress/fixtures
