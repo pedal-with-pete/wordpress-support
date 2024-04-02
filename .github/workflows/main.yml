@@ -33,11 +33,11 @@ jobs:
           version: 7
           run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      # - name: Get pnpm store directory
+      #   id: pnpm-cache
+      #   shell: bash
+      #   run: |
+      #     echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       # - name: Check PNPM store path
       #   shell: bash
@@ -58,6 +58,11 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Check PNPM store path
+        shell: bash
+        run: |
+          echo "STORE_PATH=${{ env.STORE_PATH }}"
 
       - uses: actions/cache@v4
         name: Setup pnpm cache
