@@ -39,20 +39,36 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
+      # - name: Check PNPM store path
+      #   shell: bash
+      #   run: |
+      #     echo "STORE_PATH=${{ steps.pnpm-cache.outputs.STORE_PATH }}"
+
+      # - uses: actions/cache@v3
+      #   name: Setup pnpm cache
+      #   with:
+      #     path: |
+      #       ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+      #       /home/runner/.cache/Cypress
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
+
       - name: Check PNPM store path
         shell: bash
         run: |
-          echo "STORE_PATH=${{ steps.pnpm-cache.outputs.STORE_PATH }}"
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            /home/runner/.cache/Cypress
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: E2E on Chrome
         # Cypress github action: https://github.com/cypress-io/github-action
