@@ -26,11 +26,11 @@ jobs:
           node-version: "16"
 
       # PNPM setup github action: https://github.com/pnpm/action-setup
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
 
       # - name: Get pnpm store directory
