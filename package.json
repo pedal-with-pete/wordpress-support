@@ -1,17 +1,21 @@
 {
   "name": "@pedal-with-pete/wordpress-support",
   "version": "1.0.0",
-  "description": "",
-  "packageManager": "pnpm@7.11.0",
   "scripts": {
-    "debug": "cypress open"
+    "debug": "cypress open",
+    "test:chrome": "cypress run --browser chrome --headless",
+    "test:firefox": "cypress run --browser firefox --headless",
+    "test:edge": "cypress run --browser edge --headless"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Uche Chilaka <uche@lar.city>"
+  ],
+  "license": "UNLICENSED",
   "devDependencies": {
-    "cypress": "^11.2.0",
     "@types/node": "16.x",
+    "cypress": "^11.2.0",
+    "dayjs": "^1.11.10",
     "typescript": "^4.0.0"
   }
 }

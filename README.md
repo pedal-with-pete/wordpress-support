@@ -1,6 +1,6 @@
-# Pedal with Pete E2E Test Suite
+# Pedal with Pete Monorepo
 
-- [Pedal with Pete E2E Test Suite](#pedal-with-pete-e2e-test-suite)
+- [Pedal with Pete Monorepo](#pedal-with-pete-monorepo)
   - [Ports](#ports)
   - [Update hostfile](#update-hostfile)
   - [Setup local dependency for asure functions development](#setup-local-dependency-for-asure-functions-development)
@@ -13,6 +13,8 @@
   - [Server configurations](#server-configurations)
     - [Upload limit](#upload-limit)
   - [References](#references)
+
+A repository for testing and maintaining Pedal with Pete applications, starting with E2E tests for the Wordpress website.
 
 The sandbox environment for the Pedal with Pete website is <https://sandboxforpwpwordpress.azurewebsites.net/wp-admin>
 

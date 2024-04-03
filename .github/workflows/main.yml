@@ -9,58 +9,93 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  # Set the default website URL
+  WEBSITE_URL: https://pedalwithpete.org
+
 jobs:
   # https://sandboxforpwpwordpress.azurewebsites.net/
-  cypress-e2e-chrome:
+  cypress-e2e:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version:
+          - "16"
+          - "18"
+          - "20"
+          - "lts/*"
+        # See https://github.com/cypress-io/github-action/tree/v6/?tab=readme-ov-file#browser
+        browser:
+          - chrome
+          - edge
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # # https://github.com/pedal-with-pete/e2e-composite-action
       # - uses: pedal-with-pete/e2e-composite-action@v1.0.6
 
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup E2E cache
+        with:
+          path: |
+            ~/.cache/Cypress
+          key: e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
+
       # Install NPM dependencies
       - name: Install nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: ${{ matrix.node-version }}
 
       # PNPM setup github action: https://github.com/pnpm/action-setup
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Check PNPM store path
         shell: bash
         run: |
-          echo "STORE_PATH=${{ steps.pnpm-cache.outputs.STORE_PATH }}"
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - uses: actions/cache@v4
+        name: Setup PNPM cache
         with:
           path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            /home/runner/.cache/Cypress
+            ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
-      - name: E2E on Chrome
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Cypress dependencies
+        run: pnpm cypress install
+
+      - name: E2E ${{ matrix.node-version }} / ${{ matrix.browser }} tests
         # Cypress github action: https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
-        env:
-          WEBSITE_URL: https://pedalwithpete.org
+        uses: cypress-io/github-action@v6
+        id: cypress-e2e-run
         with:
-          browser: chrome
+          browser: ${{ matrix.browser }}
           spec: |
             cypress/e2e/1-donate/**/*.cy.js
             cypress/e2e/2-volunteer/**/*.cy.js
+
+      - uses: actions/upload-artifact@v4
+        if: steps.cypress-e2e-run.outcome != 'success'
+        with:
+          name: cypress-artifacts-${{ env.COMMIT_SHORT_SHA }}
+          path: |
+            cypress/screenshots/
+            cypress/videos/
+          retention-days: 7
+          overwrite: true          
