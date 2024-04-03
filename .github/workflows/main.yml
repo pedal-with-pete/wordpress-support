@@ -41,11 +41,18 @@ jobs:
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
           echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
 
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/Cypress
+          key: e2e-cache-${{ env.COMMIT_SHORT_SHA }}
+
       # Install NPM dependencies
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       # PNPM setup github action: https://github.com/pnpm/action-setup
       - uses: pnpm/action-setup@v3
@@ -70,6 +77,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Install Cypress dependencies
+        run: pnpm cypress install
 
       - name: E2E ${{ matrix.node-version }} / ${{ matrix.browser }} tests
         # Cypress github action: https://github.com/cypress-io/github-action
