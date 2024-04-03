@@ -41,11 +41,11 @@ jobs:
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
           echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
 
-      # - uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.cache/Cypress
-      #     key: e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}-${{ hashFiles('pnpm-lock.json') }}
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/Cypress
+          key: e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
 
       # Install NPM dependencies
       - name: Install nodejs
@@ -71,7 +71,6 @@ jobs:
         with:
           path: |
             ${{ env.STORE_PATH }}
-            ~/.cache/Cypress
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
