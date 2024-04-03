@@ -47,8 +47,6 @@ jobs:
           path: |
             ~/.cache/Cypress
           key: e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
-          restore-keys: |
-            e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
 
       # Install NPM dependencies
       - name: Install nodejs
@@ -75,8 +73,8 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          # restore-keys: |
+          #   ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
         run: pnpm install
