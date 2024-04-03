@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { getWebsiteURL } from '../../support/utils'
+
 describe('donate via fundraiser page', () => {
   const hitPayPalCTA = () => {
     // Click the donation button
@@ -7,7 +9,8 @@ describe('donate via fundraiser page', () => {
   }
 
   beforeEach(() => {
-    cy.visit('https://pedalwithpete.org')
+    cy.viewport('macbook-15')
+    cy.visit(getWebsiteURL())
     cy.intercept('GET', 'https://www.paypal.com/fundraiser/charity/1645656').as('visitFundraiserPage')
   })
 

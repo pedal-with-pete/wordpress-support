@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { getWebsiteURL } from '../../support/utils'
+
 function getIFrameBody($el) {
   return $el.contents().find('body')
 }
@@ -14,8 +16,9 @@ function inHubSpotForm(testHandler) {
 
 describe('hubspot volunteer form', () => {
   beforeEach(() => {
-    cy.visit('https://pedalwithpete.org')
-    cy.intercept('GET', 'https://pedalwithpete.org/volunteer').as('visitVolunteerPage')
+    cy.viewport('macbook-15')
+    cy.visit(getWebsiteURL())
+    cy.intercept('GET', /\/\/(www.)?pedalwithpete.org\/volunteer/).as('visitVolunteerPage')
     cy.contains('Sign Up').click()
     cy.wait('@visitVolunteerPage')
   })
