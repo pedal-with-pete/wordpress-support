@@ -35,6 +35,12 @@ jobs:
       # # https://github.com/pedal-with-pete/e2e-composite-action
       # - uses: pedal-with-pete/e2e-composite-action@v1.0.6
 
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+
       # Install NPM dependencies
       - name: Install nodejs
         uses: actions/setup-node@v4
@@ -73,8 +79,19 @@ jobs:
       - name: E2E ${{ matrix.node-version }} / ${{ matrix.browser }} tests
         # Cypress github action: https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v4
+        id: cypress-e2e-run
         with:
           browser: ${{ matrix.browser }}
           spec: |
             cypress/e2e/1-donate/**/*.cy.js
             cypress/e2e/2-volunteer/**/*.cy.js
+
+      - uses: actions/upload-artifact@v4
+        if: steps.cypress-e2e-run.outcome != 'success'
+        with:
+          name: cypress-artifacts-${{ env.COMMIT_SHORT_SHA }}
+          path: |
+            cypress/screenshots/
+            cypress/videos/
+          retention-days: 7
+          overwrite: true          
