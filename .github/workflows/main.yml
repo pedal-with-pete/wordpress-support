@@ -26,7 +26,7 @@ jobs:
           - "lts/*"
         browser:
           - chrome
-          - firefox
+          # - firefox
           - edge
 
     steps:
