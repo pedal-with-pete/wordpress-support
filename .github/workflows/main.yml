@@ -24,9 +24,9 @@ jobs:
           - "18"
           - "20"
           - "lts/*"
+        # See https://github.com/cypress-io/github-action/tree/v6/?tab=readme-ov-file#browser
         browser:
           - chrome
-          # - firefox
           - edge
 
     steps:
@@ -42,10 +42,13 @@ jobs:
           echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
 
       - uses: actions/cache@v4
+        name: Setup E2E cache
         with:
           path: |
             ~/.cache/Cypress
           key: e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
+          restore-keys: |
+            e2e-cache-${{ runner.os }}-${{ env.COMMIT_SHORT_SHA }}
 
       # Install NPM dependencies
       - name: Install nodejs
