@@ -26,8 +26,8 @@ jobs:
           - "lts/*"
         browser:
           - chrome
-          # - firefox
-          # - edge
+          - firefox
+          - edge
 
     steps:
       - uses: actions/checkout@v4
@@ -60,11 +60,6 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - name: Check PNPM store path
-        shell: bash
-        run: |
-          echo "STORE_PATH=${{ env.STORE_PATH }}"
-
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
@@ -78,7 +73,7 @@ jobs:
 
       - name: E2E ${{ matrix.node-version }} / ${{ matrix.browser }} tests
         # Cypress github action: https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         id: cypress-e2e-run
         with:
           browser: ${{ matrix.browser }}
