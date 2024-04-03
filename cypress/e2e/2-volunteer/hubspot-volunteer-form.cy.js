@@ -17,8 +17,10 @@ function inHubSpotForm(testHandler) {
 describe('hubspot volunteer form', () => {
   beforeEach(() => {
     cy.viewport('macbook-15')
-    cy.visit(getWebsiteURL())
+    cy.intercept('GET', /\/\/(www.)?pedalwithpete.org\/?/).as('visitHomePage')
     cy.intercept('GET', /\/\/(www.)?pedalwithpete.org\/volunteer/).as('visitVolunteerPage')
+    cy.visit(getWebsiteURL())
+    cy.wait('@visitHomePage').its('response.statusCode').should('eq', 200)
     cy.contains('Sign Up').click()
     cy.wait('@visitVolunteerPage')
   })

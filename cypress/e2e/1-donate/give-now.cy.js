@@ -5,10 +5,12 @@ import { getWebsiteURL } from '../../support/utils'
 describe('donate via the website top bar CTA', () => {
   beforeEach(() => {
     cy.viewport('macbook-15')
-    cy.visit(getWebsiteURL())
-    cy.get('a.gutentor-button').filter(':contains("Give Now")').as('giveNowButton')
+    cy.intercept('GET', /\/\/(www.)?pedalwithpete.org\/?/).as('visitHomePage')
     cy.intercept('GET', 'https://www.paypal.com/fundraiser/charity/*').as('visitDonationPage')
     cy.intercept('GET', 'https://www.paypal.com/donate?token=*').as('paymentModal')
+    cy.visit(getWebsiteURL())
+    cy.wait('@visitHomePage').its('response.statusCode').should('eq', 200)
+    cy.get('a.gutentor-button').filter(':contains("Give Now")').as('giveNowButton')
   })
 
   it('displays the "Give Now" CTA', () => {

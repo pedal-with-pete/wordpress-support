@@ -10,8 +10,10 @@ describe('donate via fundraiser page', () => {
 
   beforeEach(() => {
     cy.viewport('macbook-15')
-    cy.visit(getWebsiteURL())
+    cy.intercept('GET', /\/\/(www.)?pedalwithpete.org\/?/).as('visitHomePage')
     cy.intercept('GET', 'https://www.paypal.com/fundraiser/charity/1645656').as('visitFundraiserPage')
+    cy.visit(getWebsiteURL())
+    cy.wait('@visitHomePage').its('response.statusCode').should('eq', 200)
   })
 
   it('loads the fundraiser page', () => {
